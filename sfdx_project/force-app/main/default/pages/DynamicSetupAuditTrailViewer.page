@@ -1,0 +1,120 @@
+<apex:page showHeader="true" sidebar="false" controller="SetupAuditTrailViewerController">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+
+    <apex:slds />
+
+    <style>
+        .c-setup-audit-trail-table th {
+            cursor: default;
+        }
+    </style>
+
+    <div class="slds-scope">
+        <apex:form >
+            <label>Show recent events in the last</label>&nbsp;
+            <apex:selectList value="{!hours}" size="1">
+                <apex:selectOptions value="{!hoursOptions}"/>
+                <apex:actionSupport event="onchange" action="{!getSetupAuditTrailVF}" />
+            </apex:selectList>
+            <label>&nbsp;hours</label>
+        </apex:form>
+        <br />
+        <div class="c-container "></div>
+    </div>
+
+    <script id="setup-audit-trail-template" type="text/x-handlebars-template">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer c-setup-audit-trail-table">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th scope="col" title="The full description of changes made in Setup. For example, if the Action field has a value of PermSetCreate, the Display field has a value like “Created permission set MAD: with user license Salesforce.”">
+                        Action
+                    </th>
+                    <th scope="col" title="The section in the Setup menu where the action occurred. For example, Manage Users or Company Profile.">
+                        Section
+                    </th>
+                    <th scope="col" title="The Login-As user who executed the action in Setup. If a Login-As user didn’t perform the action, this field is blank.">
+                        Delegate User
+                    </th>
+                    <th scope="col">
+                        Created By
+                    </th>
+                    <th scope="col">
+                        Created Date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each records}}
+                <tr>
+                    <td>
+                        {{{Display_}}}
+                    </td>
+                    <td>
+                        {{Section}}
+                    </td>
+                    <td>
+                        {{DelegateUser}}
+                    </td>
+                    <td>
+                        {{CreatedBy.Name}}
+                    </td>
+                    <td>
+                        {{CreatedDate_}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </script>
+
+
+    <script>
+
+        var itemTemplate = Handlebars.compile(document.getElementById("setup-audit-trail-template").innerHTML);
+
+        var hours = 1;
+
+        var setupAuditTrailJson = '{!JSENCODE(data)}';
+
+        function timeChanged() {
+            getSetupAuditTrail(parseInt(jQuery('#c-hours-select').val(), 10));
+        }
+
+        function buildTableFromVF() {
+            var records = JSON.parse(setupAuditTrailJson);
+            buildTable(records);
+        }
+
+        function buildTable(records) {
+            try {
+                for (var record of records) {
+                    record.CreatedDate_ = moment(record.CreatedDate).format('L LT');
+                    if (record.Field1) {
+                        record.Display_ = record.Display.replace(record.Field1, '<b>'+record.Field1+'</b>');
+                    } else {
+                        record.Display_ = record.Display;
+                    }
+                }
+                var htmlPart = itemTemplate({records: records});
+                jQuery('.c-container').html(htmlPart);
+            } catch(err) {
+                console.log(err)
+                jQuery('.c-container').text('Setup Audit Trail information is unavailable.');
+            }
+        }
+
+        jQuery(function(){
+
+            jQuery('#c-hours-select').val(hours);
+
+            // getSetupAuditTrail(hours);
+            buildTableFromVF();
+
+        });
+    </script>
+
+</apex:page>

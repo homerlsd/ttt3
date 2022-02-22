@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>GraphAPI2</label>
+    <protected>true</protected>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">74ff3355-06a7-44af-867e-28bde28adc87</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">Ezw7Q~HVe7tuSBo1p8qjMsBVuglH-sL-RokeL</value>
+    </values>
+    <values>
+        <field>CloudId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Scope__c</field>
+        <value xsi:type="xsd:string">https://graph.microsoft.com/.default</value>
+    </values>
+    <values>
+        <field>Token__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>
