@@ -1,1 +1,0 @@
-<apex:page controller="ContentPageController" contentType="application/json">{!jsonData}</apex:page>
