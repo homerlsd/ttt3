@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Jira</label>
+    <protected>true</protected>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">fX32CiN8r5iq1CixwEXSNzkVAKcpZRUy</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">A8wK7Bzmg-_hiGySuRcIVbHeJ-V67qKazZiAyBvAga-QEQEpoWupbjpAwP7u3wJS</value>
+    </values>
+    <values>
+        <field>CloudId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Scope__c</field>
+        <value xsi:type="xsd:string">read:jira-user read:jira-work write:jira-work offline_access</value>
+    </values>
+    <values>
+        <field>Token__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>
