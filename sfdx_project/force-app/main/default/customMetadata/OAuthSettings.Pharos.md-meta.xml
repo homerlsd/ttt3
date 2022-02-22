@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Pharos</label>
+    <protected>true</protected>
+    <values>
+        <field>Client_Id__c</field>
+        <value xsi:type="xsd:string">3MVG9dZJodJWITSsWQgpCx5w4xDdyNV0aJAFqnw3oDF2ipmB.9cSrRb9Ex0qcvapHsnZ_Lw5.lbqhLAau9A6j</value>
+    </values>
+    <values>
+        <field>Client_Secret__c</field>
+        <value xsi:type="xsd:string">ED8E07E1D6AA4077BFB4E38ED2E5C26511C809A5765FA1A58AFAD77CD8A82CD9</value>
+    </values>
+    <values>
+        <field>CloudId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Scope__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Token__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>
