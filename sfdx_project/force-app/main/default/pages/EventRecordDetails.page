@@ -1,0 +1,41 @@
+<apex:page showHeader="true" sidebar="false" standardController="Event__c" extensions="EventRecordDetailsController"
+lightningStyleSheets="true">
+	<base href="/apex/EventRecordDetails" />
+    <apex:slds />
+    <script>
+        let dataJson = '{!JSENCODE(logData)}'; 
+        window.APP_CONFIG = {
+            sldsIconsPath: "/apexpages/slds/latest/assets/icons",
+            assetsPath: "{!URLFOR($Resource.eventrecorddetailsapp, 'assets')}",
+            event: JSON.parse("{!JSENCODE(eventJson)}"),
+            logData: JSON.parse(dataJson.replace(new RegExp('{!packageNamespace}', 'g'), ''))
+        };
+    </script>
+	<div class="slds">
+	 	<app-root></app-root>
+        <apex:outputPanel layout="none" rendered="{!isDev}">
+            <script>
+                console.log('************************************');
+                console.log('************************************');
+                console.log('PHAROS ADMIN APP IN DEVELOPMENT MODE');
+                console.log('************************************');
+                console.log('************************************');
+
+                window.APP_CONFIG.assetsPath = 'https://localhost:4200/assets';
+
+            </script>
+            <div style="position: fixed; top: 0; right: 0; background-color: #ef4646; color: #fff; padding: 0 7px; z-index: 99999;">http://localhost:4200</div>
+    		<script type="text/javascript" src="https://localhost:4200/runtime.js"></script>
+    		<script type="text/javascript" src="https://localhost:4200/polyfills.js"></script>
+    		<script type="text/javascript" src="https://localhost:4200/styles.js"></script>
+    		<script type="text/javascript" src="https://localhost:4200/vendor.js"></script>
+    		<script type="text/javascript" src="https://localhost:4200/main.js"></script>
+        </apex:outputPanel>
+        <apex:outputPanel layout="none" rendered="{!NOT(isDev)}">
+            <apex:stylesheet value="{!URLFOR($Resource.eventrecorddetailsapp, 'styles.css')}"/>
+            <script src="{!URLFOR($Resource.eventrecorddetailsapp, 'runtime.js')}"/>
+            <script src="{!URLFOR($Resource.eventrecorddetailsapp, 'polyfills.js')}"/>
+            <script src="{!URLFOR($Resource.eventrecorddetailsapp, 'main.js')}"/>
+        </apex:outputPanel>
+	</div>
+</apex:page>
