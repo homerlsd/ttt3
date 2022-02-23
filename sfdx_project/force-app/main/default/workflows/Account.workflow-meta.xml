@@ -11,4 +11,14 @@
         <senderType>CurrentUser</senderType>
         <template>Pharos/Default_Notification_Template</template>
     </alerts>
+    <rules>
+        <fullName>testWorkflowrule1</fullName>
+        <active>true</active>
+        <criteriaItems>
+            <field>Account.Name</field>
+            <operation>equals</operation>
+            <value>test</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
 </Workflow>

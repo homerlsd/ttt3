@@ -10,7 +10,7 @@ public with sharing class GitHubUtils {
 	public static final String GIT_API_DEFUALT_PULL_REQUST_NAME = 'New Pull Request' + GIT_API_DEFAULT_BRANCH_TIMESTAMP;
 	public static final String GIT_API_DEFAULT_COMMIT_MESSAGE = 'Commit sfdx metadata files';
 	public static final String GIT_API_DEFAULT_MERGE_COMMIT_TITLE = 'Automatic merge commit';
-	public static String LAMBDA_CONVERT_MDAPI_TO_SOURCE_FORMAT = 'https://729a5f6y94.execute-api.us-west-1.amazonaws.com/default/SFDX_Fuction?orgid={0}';
+	public static String LAMBDA_CONVERT_MDAPI_TO_SOURCE_FORMAT = 'https://sfdx.pharos.ai/SFDX_Fuction?orgid={0}';
 	public static final String EXTRA_PATH_PREFIX = '/tmp/' + UserInfo.getOrganizationId() + '/';
 
 	public static String GIT_USERNAME {
@@ -509,13 +509,25 @@ public with sharing class GitHubUtils {
 		String result = '<?xml version="1.0" encoding="UTF-8"?>\n' +
 		'<Package xmlns="http://soap.sforce.com/2006/04/metadata">\n';
 		for(String metaType : GitHubCommitBatch.MAP_ENABLED_METADATA.keySet()) {
-			result += '<types>\n' +
+			result += '    <types>\n' +
 					'        <members>*</members>\n' +
 					'        <name>' + metaType + '</name>\n' +
-					'    </types>';
+					'    </types>\n';
 		}
 		result += '    <version>' + String.valueOf(GitHubUtils.METADATA_API_VERSION) + '.0' + '</version>\n' +
 		'</Package>';
 		return result;
+	}
+
+	public static void startGitHubCommitBatch() {
+		if(ConfigUtil.CHANGE_TRACKING_SETTINGS.Git_Change_Tracking__c
+			&& ConfigUtil.GIT_API_SETTINGS.Enabled__c
+			&& (ConfigUtil.GIT_API_SETTINGS.Token__c != null || ConfigUtil.GIT_API_SETTINGS.oAuth_Token__c != null)
+			&& ConfigUtil.GIT_API_SETTINGS.Branch_Name__c != null
+			&& ConfigUtil.GIT_API_SETTINGS.Reponame__c != null
+			&& ConfigUtil.GIT_API_SETTINGS.Username__c != null) {
+
+			Database.executeBatch(new GitHubCommitBatch(), 1);
+		}
 	}
 }
