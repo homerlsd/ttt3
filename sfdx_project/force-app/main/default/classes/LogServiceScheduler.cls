@@ -15,6 +15,9 @@ public with sharing class LogServiceScheduler implements Schedulable, Database.A
 
             // validate Graph Api OAuth token and refresh
             GraphAPIService.validateAndRefreshGraphApiOauthTokenFuture();
+
+            // check and start tracking changes
+            GitHubUtils.startGitHubCommitBatch();
         }
     }
 }

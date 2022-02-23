@@ -156,16 +156,15 @@ public with sharing class GitHubCommitBatch implements Database.batchable<Metada
 	public static final String AUDIT_TRAIL_SECTION_APEX_TRIGGER = 'Apex Trigger';
 	public static final String AUDIT_TRAIL_SECTION_FLOWS = 'Flows';
 	public static final String AUDIT_TRAIL_SECTION_CUSTOM_OBJECTS = 'Custom Objects';
-
 	public static final String AUDIT_TRAIL_SECTION_APEX_PAGE = 'Page';
-	public static final String AUDIT_TRAIL_SECTION_APEX_COMPONENT = 'Apex Components';//?
-
-	public static final String AUDIT_TRAIL_SECTION_APPROVAL_PROCESS = 'Security Controls';
-	public static final String AUDIT_TRAIL_SECTION_WORKFLOW = 'Security Controls';
-	public static final String AUDIT_TRAIL_SECTION_AURA = 'Security Controls';
+	public static final String AUDIT_TRAIL_SECTION_APEX_COMPONENT = 'Component';
+	public static final String AUDIT_TRAIL_SECTION_APPROVAL_PROCESS = 'Approval Process';
+	public static final String AUDIT_TRAIL_SECTION_WORKFLOW = 'Workflow Rule';
+	public static final String AUDIT_TRAIL_SECTION_AURA = 'Lightning Components';
 	public static final String AUDIT_TRAIL_SECTION_REMOTE_SITE_SETTINGS = 'Security Controls';
-	public static final String AUDIT_TRAIL_SECTION_CONNECTED_APP = 'Security Controls';
-	public static final String AUDIT_TRAIL_SECTION_NAMED_CREDENTIAL = 'Security Controls';
+	public static final String AUDIT_TRAIL_SECTION_CONNECTED_APP = 'Connected Apps';
+	public static final String AUDIT_TRAIL_SECTION_CONNECTED_APP2 = 'Application';
+	public static final String AUDIT_TRAIL_SECTION_NAMED_CREDENTIAL = 'Named Credentials';
 	public static final String AUDIT_TRAIL_SECTION_CUSTOM_METADATA = 'Custom Metadata Types';
 
 
@@ -181,6 +180,7 @@ public with sharing class GitHubCommitBatch implements Database.batchable<Metada
 		AUDIT_TRAIL_SECTION_AURA => METADATA_TYPE_AURA,
 		AUDIT_TRAIL_SECTION_REMOTE_SITE_SETTINGS => METADATA_TYPE_REMOTE_SITE_SETTINGS,
 		AUDIT_TRAIL_SECTION_CONNECTED_APP => METADATA_TYPE_CONNECTED_APP,
+		AUDIT_TRAIL_SECTION_CONNECTED_APP2 => METADATA_TYPE_CONNECTED_APP,
 		AUDIT_TRAIL_SECTION_NAMED_CREDENTIAL => METADATA_TYPE_NAMED_CREDENTIAL,
 		AUDIT_TRAIL_SECTION_CUSTOM_METADATA => METADATA_TYPE_CUSTOM_METADATA
 	};

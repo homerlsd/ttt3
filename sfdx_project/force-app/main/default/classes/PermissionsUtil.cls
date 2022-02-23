@@ -563,7 +563,7 @@ public without sharing class PermissionsUtil {
 	public static Boolean GitHubIntegrationEnabled {
 		get {
 			if(GitHubIntegrationEnabled == null) {
-				GitHubIntegrationEnabled = true;//FeatureMap1.get(MAP_FEATURE1_INDEX_BY_NAME.get(FP_GITHUB_INTEGRATION_ENABLED));
+				GitHubIntegrationEnabled = FeatureMap1.get(MAP_FEATURE1_INDEX_BY_NAME.get(FP_GITHUB_INTEGRATION_ENABLED));
 			}
 			return GitHubIntegrationEnabled;
 		}
@@ -574,7 +574,7 @@ public without sharing class PermissionsUtil {
 	public static Boolean ChangeTrackingEnabled {
 		get {
 			if(ChangeTrackingEnabled == null) {
-				ChangeTrackingEnabled = true;//FeatureMap1.get(MAP_FEATURE1_INDEX_BY_NAME.get(FP_CHANGE_TRACKING_ENABLED));
+				ChangeTrackingEnabled = FeatureMap1.get(MAP_FEATURE1_INDEX_BY_NAME.get(FP_CHANGE_TRACKING_ENABLED));
 			}
 			return ChangeTrackingEnabled;
 		}
